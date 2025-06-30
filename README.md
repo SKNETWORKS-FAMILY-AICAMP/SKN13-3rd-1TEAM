@@ -1,4 +1,16 @@
-# SKN13-3rd-1TEAM 
+![image](https://github.com/user-attachments/assets/f9190b6b-762b-46c1-a911-d3ef17fc7a5a)# SKN13-3rd-1TEAM 
 
 목표
 “상식 수준의 의학정보 vs 최신 의학 논문 기반 정보 비교”를 자동으로 해주는 RAG 시스템은 의학 지식의 격차를 줄이고, 환자와 의료인 모두에게 중요한 통찰을 제공할 수 있는 도구
+
+### 1. 데이터 수집
+- PMC , Europe PMC API 크롤링 `건강 상식` 키워드 논문 크롤링
+- medirxiv `medicine` 키워드 논문 크롤링
+- VectorDB 저장 (ChromaDB)
+- AI Model : gpt-4.1
+- Embedding Model : text-embedding-3-large
+
+![image](https://github.com/user-attachments/assets/a60bcfe0-d195-4c95-abf3-845c2749c68e)
+
+
+![image](https://github.com/user-attachments/assets/405fa90a-910e-48d3-8009-a5736d553923)
