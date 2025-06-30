@@ -1,7 +1,7 @@
-![image](https://github.com/user-attachments/assets/6432728a-f8d6-44f5-a814-0c22aadc302b)
+![image](https://github.com/user-attachments/assets/37d717b3-9d0d-4d57-bed3-b97e3f0d2f98)
 
 주제
-##“상식 수준의 의학정보 vs 최신 의학 논문 기반 정보 비교” 를 자동으로 해주는 도구
+## “상식 수준의 의학정보 vs 최신 의학 논문 기반 정보 비교” 를 자동으로 해주는 도구
 
 일반 상식과 최신 논문의 의학정보를 비교함으로 최신 일반 상식의 과학적 오류를 알아 볼 수 있는 챗 봇 시스템입니다.
 
