@@ -9,7 +9,7 @@
 기존 gpt 4.1 모델에 의학 논문데이터를 보강했습니다.
 
 ### 1. 데이터 수집
-- PMC , Europe PMC API 크롤링 `건강 상식` 키워드 논문 크롤링
+- PMC(pubmed central) , Europe PMC API 크롤링 `건강 상식` 키워드 논문 크롤링
 - medirxiv `medicine` 키워드 논문 크롤링
 - PubMed 크롤링
 - VectorDB 저장 (ChromaDB)
