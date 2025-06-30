@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/6432728a-f8d6-44f5-a814-0c22aadc302b)
+
 주제
 ##“상식 수준의 의학정보 vs 최신 의학 논문 기반 정보 비교” 를 자동으로 해주는 도구
 
