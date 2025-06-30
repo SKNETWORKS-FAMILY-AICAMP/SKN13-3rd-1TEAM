@@ -1,5 +1,3 @@
-![image](https://github.com/user-attachments/assets/f9190b6b-762b-46c1-a911-d3ef17fc7a5a)# SKN13-3rd-1TEAM 
-
 목표
 “상식 수준의 의학정보 vs 최신 의학 논문 기반 정보 비교”를 자동으로 해주는 RAG 시스템은 의학 지식의 격차를 줄이고, 환자와 의료인 모두에게 중요한 통찰을 제공할 수 있는 도구
 
