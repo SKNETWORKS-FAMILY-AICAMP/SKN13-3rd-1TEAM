@@ -20,3 +20,9 @@
 ![image](https://github.com/user-attachments/assets/8361f1dd-c0b5-4cd2-ba96-27e5fe9b9714)
 
 ![image](https://github.com/user-attachments/assets/405fa90a-910e-48d3-8009-a5736d553923)
+
+
+인용 사이트
+1. PubMed(https://pubmed.ncbi.nlm.nih.gov/)
+2. Europe PMC(https://europepmc.org/)
+3. MedRxiv(https://www.medrxiv.org/)
