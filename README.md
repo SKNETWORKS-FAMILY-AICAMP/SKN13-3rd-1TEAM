@@ -1,4 +1,4 @@
-### 팀원
+# 팀원
 
 ![image](https://github.com/user-attachments/assets/37d717b3-9d0d-4d57-bed3-b97e3f0d2f98)
 
