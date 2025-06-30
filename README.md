@@ -7,8 +7,7 @@
 - VectorDB 저장 (ChromaDB)
 - AI Model : gpt-4.1
 - Embedding Model : text-embedding-3-large
-
-![image](https://github.com/user-attachments/assets/2a136a03-15d4-450c-a396-68bfb797351f)
-
+- 
+![image](https://github.com/user-attachments/assets/8361f1dd-c0b5-4cd2-ba96-27e5fe9b9714)
 
 ![image](https://github.com/user-attachments/assets/405fa90a-910e-48d3-8009-a5736d553923)
