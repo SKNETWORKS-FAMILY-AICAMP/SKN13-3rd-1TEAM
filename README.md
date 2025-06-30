@@ -8,7 +8,7 @@
 - AI Model : gpt-4.1
 - Embedding Model : text-embedding-3-large
 
-![image](https://github.com/user-attachments/assets/a60bcfe0-d195-4c95-abf3-845c2749c68e)
+![image](https://github.com/user-attachments/assets/2a136a03-15d4-450c-a396-68bfb797351f)
 
 
 ![image](https://github.com/user-attachments/assets/405fa90a-910e-48d3-8009-a5736d553923)
