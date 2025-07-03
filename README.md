@@ -1,5 +1,56 @@
 # SKN13-3RD-1TEAM: 상식 vs 최신 의학 논문 기반 챗봇 & RAG 평가
 
+## 팀원 소개
+<table align=center>
+  <tbody>
+   <tr>
+      <td align=center><b>남궁건우</b></td>
+      <td align=center><b>모지호</b></td>
+      <td align=center><b>민경재</b></td>
+      <td align=center><b>안수민</b></td>
+    </tr>
+    <tr>
+      <td align="center">
+          <img alt="Image" src="images/gw.jpeg" width="200px;" alt="남궁건우"/>
+      </td>
+      <td align="center">
+          <img alt="Image" src="images/jh.jpeg" width="200px;" alt="모지호"/>
+      </td>
+      <td align="center">
+        <img alt="Image" src="images/gj.jpeg" width="200px;" alt="민경재" />
+      </td>
+      <td align="center">
+        <img alt="Image" src="images/sm.jpg" width="200px;" alt="안수민"/>
+      </td>
+    </tr>
+    <tr>
+       <td align="center">
+       <a href="https://github.com/NGGW519">
+         <img src="https://img.shields.io/badge/GitHub-NGGW519-FEFFAB?logo=github" alt="남궁건우 GitHub"/>
+       </a>
+       </td>
+       <td align="center">
+       <a href="https://github.com/mojiho7">
+         <img src="https://img.shields.io/badge/GitHub-mojiho-B9FF92?logo=github" alt="모지호 GitHub"/>
+       </a>
+       </td>
+       <td align="center">
+       <a href="https://github.com/rudwo524">
+         <img src="https://img.shields.io/badge/GitHub-rudwo524-FFAFB0?logo=github" alt="민경재 GitHub"/>
+       </a>
+       </td>
+       <td align="center">
+       <a href="https://github.com/tnalsdk111">
+         <img src="https://img.shields.io/badge/GitHub-tnalsdk111-BD9FFF?logo=github" alt="안수민 GitHub"/>
+       </a>
+       </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br/><br/>
+
+
 ## 프로젝트 개요
 
 - **목표:**  
@@ -139,9 +190,6 @@ python RAGAS/ragas_eval_all.py
 - PubMed: https://pubmed.ncbi.nlm.nih.gov/
 - Europe PMC: https://europepmc.org/
 - MedRxiv: https://www.medrxiv.org/
-
----
-
 
 ---
 
