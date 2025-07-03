@@ -66,7 +66,38 @@
 - **데이터 수집 및 전처리 문서**
   - `crawling/report.ipynb` : 데이터 수집, 전처리, 메타데이터 정제, 중복 처리 등 상세 설명
 - **시스템 아키텍처 구성도**
-  - `README.md` 또는 별도 문서/이미지로 제공 (예: 프로젝트 구조 다이어그램)
+  - Mermaid Diagram
+    ```mermaid
+    flowchart TD
+        subgraph User
+            U["사용자\n질문 입력"]
+        end
+        subgraph WebApp
+            ST["Streamlit 챗봇(app.py)"]
+            G["LLM 파이프라인(main.ipynb, module.py)"]
+        end
+        subgraph RAG
+            RET["Retriever\n(ChromaDB)"]
+            LLM["LLM (GPT-4.1)"]
+            RAGAS["RAGAS 평가(RAGAS/ragas_eval_all.py)"]
+        end
+        subgraph Data
+            CR["논문 크롤링/전처리\n(crawling/module.py, crawling.ipynb)"]
+            VS["Vector Store\n(ChromaDB, crawling/vector_store/)"]
+        end
+    
+        U -->|질문| ST
+        ST --> G
+        G -->|질문/프롬프트| RET
+        RET -->|관련 논문 context| LLM
+        LLM -->|답변| ST
+        CR --> VS
+        RET --> VS
+        G --> RAGAS
+        RAGAS --> VS
+        RAGAS --> LLM
+        RAGAS -->|평가결과| ST
+    ``` 
 - **수집한 데이터셋, 전처리한 데이터셋**
   - 원본/전처리 데이터: `crawling/vector_store/` 내 ChromaDB 벡터스토어(논문 임베딩)
 - **구현 코드**
