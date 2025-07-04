@@ -180,7 +180,8 @@ pip install -r requirements.txt  # 필요시
 
 ### 2. 데이터 수집 및 벡터스토어 구축
 
-- `crawling/crawling.ipynb` 또는 `crawling/module.py`의 `process_topic` 함수로 논문 크롤링 및 저장
+- 새 데이터 수집： `crawling/crawling.ipynb` 또는 `crawling/module.py` 실행
+- 기존 데이터베이스 사용： `main.ipynb` 실행 → zip 파일 자동 다운로드 및 압축 해제
 
 ### 3. 챗봇 서비스 실행
 
