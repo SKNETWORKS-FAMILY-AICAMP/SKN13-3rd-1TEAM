@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>아이디 찾기</title>
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; background: #f4f8ff; margin: 0; }
+        .find-container {
+            max-width: 400px;
+            margin: 60px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            padding: 36px 32px 32px 32px;
+        }
+        h2 { color: #336ee8; text-align: center; margin-bottom: 28px; }
+        .back-link { display: block; margin-bottom: 18px; color: #336ee8; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
+        form { margin-top: 24px; }
+        button { background: #336ee8; color: #fff; border: none; border-radius: 6px; padding: 10px 24px; font-size: 1em; cursor: pointer; margin-top: 12px; }
+        button:hover { background: #1749b1; }
+        .messages { list-style: none; padding: 0; margin-bottom: 18px; }
+        .messages li { padding: 10px 0; text-align: center; border-radius: 6px; margin-bottom: 6px; font-size: 1em; }
+        .messages li.success { background: #e6f9e6; color: #1a7f1a; border: 1px solid #b2e6b2; }
+        .messages li.error { background: #ffeaea; color: #d32f2f; border: 1px solid #ffb2b2; }
+    </style>
+</head>
+<body>
+    <div class="find-container">
+        <a href="{% url 'login_view' %}" class="back-link">← 로그인으로 돌아가기</a>
+        <h2>아이디 찾기</h2>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">아이디 찾기</button>
+        </form>
+    </div>
+</body>
+</html> 

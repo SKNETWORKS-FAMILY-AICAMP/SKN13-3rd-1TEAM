@@ -1,0 +1,279 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>헬스케어 챗봇</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #f0f4ff, #dbefff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .chat-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            width: 420px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #4e83ff, #6fb1fc);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message {
+            padding: 10px 15px;
+            margin-bottom: 12px;
+            border-radius: 20px;
+            max-width: 80%;
+            word-break: break-word;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .message.user {
+            background: #d1e7ff;
+            align-self: flex-end;
+        }
+
+        .message.bot {
+            background: #e6e6e6;
+            align-self: flex-start;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid #eee;
+            background: #fff;
+        }
+
+        .chat-input input[type="text"] {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .chat-input input[type="text"]:focus {
+            border-color: #4e83ff;
+            box-shadow: 0 0 5px rgba(78, 131, 255, 0.3);
+        }
+
+        .chat-input button {
+            background: #4e83ff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .chat-input button:hover {
+            background: #336ee8;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(10px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        /* Logout fixed button */
+        .logout-fixed-btn {
+            position: fixed;
+            top: 15px;
+            right: 20px;
+            background: #ff6767;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: background 0.2s ease;
+        }
+
+        .logout-fixed-btn:hover {
+            background: #e44b4b;
+        }
+
+        /* 사이드바 스타일 */
+        .sidebar-fixed {
+            position: fixed;
+            top: 70px;
+            left: 20px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            width: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #4e83ff;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 12px;
+        }
+
+        .sidebar-menu li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .sidebar-menu li a:hover {
+            background: #f0f4ff;
+            color: #4e83ff;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <div class="sidebar-fixed">
+        <div class="sidebar-title">👤 마이페이지</div>
+        <ul class="sidebar-menu">
+            <li><a href="{% url 'profile_edit' %}">회원정보 변경</a></li>
+            <li><a href="{% url 'password_change' %}">비밀번호 변경</a></li>
+        </ul>
+    </div>
+    <div style="position: fixed; top: 15px; right: 160px; z-index: 1001; background: #fff0; color: #333; font-size: 1.05em; font-weight: 500; display: flex; align-items: center; gap: 8px;">
+        {% if nickname %}
+            <span>안녕하세요, <b style="color:#0a84ff">{{ nickname }}</b>님</span>
+        {% endif %}
+    </div>
+    <a href="{% url 'logout_view' %}" class="logout-fixed-btn">로그아웃</a>
+    {% endif %}
+
+    <div class="chat-container">
+        <div class="chat-header">
+            🤖 헬스케어 챗봇 💬
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            {% for message in chat_messages %}
+                <div class="message {{ message.sender }}">
+                    {{ message.text }}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="메시지를 입력하세요..." />
+            <button id="send-button">전송</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('send-button').addEventListener('click', sendMessage);
+        document.getElementById('user-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        function sendMessage() {
+            const userInput = document.getElementById('user-input');
+            const message = userInput.value.trim();
+            if (message === '') return;
+
+            appendMessage(message, 'user');
+            userInput.value = '';
+
+            const chatMessages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', 'bot');
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            fetch('/chatbot/chat_api/stream/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({ message: message })
+            }).then(response => {
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+                function readChunk() {
+                    reader.read().then(({ done, value }) => {
+                        if (done) return;
+                        messageDiv.innerText += decoder.decode(value);
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                        readChunk();
+                    });
+                }
+                readChunk();
+            }).catch(error => {
+                console.error('Error:', error);
+                appendMessage('죄송합니다. 오류가 발생했습니다.', 'bot');
+            });
+        }
+
+        function appendMessage(message, sender) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender);
+            messageDiv.innerText = message;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+</body>
+</html>
